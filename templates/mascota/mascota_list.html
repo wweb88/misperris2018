@@ -1,0 +1,92 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block tituloPagina %}
+	<title>Lista de Mascotas | Mis Perris</title>
+{% endblock tituloPagina %}
+{% block contenido %}
+	<div class="container py-5">
+		<h1 class="titulo">Lista de Mascotas</h1>
+
+		{% if user.is_authenticated %}
+			{% if user.username == "superadmin" %}
+				<a href="{% url 'mascota_crear' %}" class="btn btn-primary">Ingresar nueva mascota</a>
+			{% endif %}
+		{% endif %}
+
+		<section class="mt-3 mb-4 conte_conjunto">
+			{% if user.username == "superadmin" %}
+			<div class="controls text-center mb-3">
+				<button class="btn btn-default control" data-filter="all">Todos</button>
+				<button class="btn btn-default control" data-filter=".rescatado">Rescatado</button>
+				<button class="btn btn-default control" data-filter=".disponible">Disponible</button>
+				<button class="btn btn-default control" data-filter=".adoptado">Adoptado</button>
+			</div>
+			{% endif %}
+			
+			{% if object_list %}
+				<div class="row mascotas">
+					{% for item in object_list %}
+						{% if user.username == "superadmin" %}
+							<div class="mix col-6 col-md-4 col-xl-3 mb-3 {% if item.estado == 'rescatado' %}rescatado{% endif %}{% if item.estado == 'disponible' %}disponible{% endif %}{% if item.estado == 'adoptado' %}adoptado{% endif %}" >
+								<div class="mascota">
+									<figure>
+										<a href="{{ item.imagen.url }}" data-toggle="lightbox" data-gallery="galeria">
+											<img src="{{ item.imagen.url }}" alt="">
+										</a>
+									</figure>
+									<div class="nom">
+										{{ item.nombre }}<br>
+										<small>( {{ item.estado }} )</small>
+									</div>
+									<div class="opciones">
+										<a href="{% url 'mascota_editar' item.id %}" class="btn btn-sm btn-warning">Editar</a>
+										<a href="{% url 'mascota_eliminar' item.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+									</div>
+								</div>
+							</div>
+						{% else %}
+							{% if item.estado == 'disponible' %}
+								<div class="mix col-6 col-md-4 col-xl-3 mb-3">
+									<div class="mascota">
+										<figure>
+											<a href="{{ item.imagen.url }}" data-toggle="lightbox" data-gallery="galeria">
+												<img src="{{ item.imagen.url }}" alt="">
+											</a>
+										</figure>
+										<div class="nom">
+											{{ item.nombre }}
+										</div>
+										<div class="opciones">
+											<a href="{% url 'mascota_adoptar' item.id %}" class="btn btn-sm btn-success">Adoptar</a>
+										</div>
+									</div>
+								</div>
+							{% endif %}
+						{% endif %}
+					{% endfor %}	
+				</div>
+				
+			{% else %}
+				<h5 class="alert alert-warning text-center mb-4">No hay registros de mascotas</h5>
+			{% endif %}
+		</section> 
+	</div>
+{% endblock contenido %}
+{% block js %}
+	<script type="text/javascript" src="{% static 'js/mixitup.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/ekko-lightbox.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/ekko-lightbox.css' %}" />
+	<script>
+		$(document).ready(function(){
+			$('[data-active="2"]').addClass('active');
+			mixitup($('.conte_conjunto'));
+		});
+
+		$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+			event.preventDefault();
+			$(this).ekkoLightbox({
+				alwaysShowClose: true
+			});
+		});
+	</script>
+{% endblock js %}

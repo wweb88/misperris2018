@@ -1,0 +1,422 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block tituloPagina %}
+	<title>Inicio | MisPerris</title>
+{% endblock tituloPagina %}
+{% block contenido %}
+	<section class="slider-caja">
+		<div class="pageblock" id="fullscreen">
+			<div class="slider">
+				<div class="slide" id="slide1"><div class="slidecontent">
+					<div class="texto">
+						Rescatamos a perros de las calles para darles otra oportunidad
+					</div>
+				</div></div>
+				<div class="slide" id="slide2"><div class="slidecontent">
+					<div class="texto">
+						Rescatamos vidas y Recuperamos sonrisas
+					</div>
+				</div></div>
+				<div class="slide" id="slide3"><div class="slidecontent">
+					<div class="texto">
+						Salvar un animal no cambiará el mundo, pero cambiará el mundo de ese animal
+					</div>
+				</div></div>
+			</div>
+		</div>
+	</section>
+	<div class="bg-1">
+		<div class="container-fluid">
+			<div class="row redes">
+				<div class="col-12 col-md-4 mb-3 mb-md-0 align-self-center">
+					<div class="telefono text-center">
+						<a href="tel:+56987654321">+569 8765 4321</a> 	
+					</div>
+				</div>
+				<div class="col-12 col-md-4 mb-3 mb-md-0 align-self-center">
+					<div class="rescue text-center">
+						Somos un pequeño grupo de apasionados por los animales que intentan día tras día dar una nueva oportunidad a los olvidados
+					</div>	
+				</div>
+				<div class="col-12 col-md-4 align-self-center">
+					<div class="iconosredes">
+						<nav>
+							<ul>
+								<li><i class="fa fa-facebook compartir1" aria-hidden="true"></i></li>
+								<li><i class="fa fa-google compartir2" aria-hidden="true"></i></li>
+								<li><i class="fa fa-instagram compartir3" aria-hidden="true"></i></li>
+								<li><a href="mailto:soporte@mispandis.cl"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container py-5">  <!--py padding y -->
+		<section class="row info mb-4">
+			<article class="col-12 col-md-6">
+				<div class="eventos text-right">					
+					<h1>Rescatados</h1>
+					<div class="linea mr-0 ml-auto mb-3"></div>
+					<p>Ellos no hablan, no son tontos. Se puede ver el antes y el después en la expresión de sus ojos. Sienten y padecen, al igual que nosotros.</p>
+
+					<div class="owl-carousel tipo1">
+						<div class="item">
+							<figure>
+								<img src="{% static 'img/rescatado1.jpg' %}">
+							</figure>
+						</div>
+						<div class="item">
+							<figure>
+								<img src="{% static 'img/rescatado2.jpg' %}">
+							</figure>
+						</div>
+						<div class="item">
+							<figure>
+								<img src="{% static 'img/rescatado3.jpg' %}">
+							</figure>
+						</div>
+					</div>
+				</div>
+			</article>	
+			<article class="col-12 col-md-6">			
+				<div class="crowdfounding text-left">
+					<div class="owl-carousel tipo1">
+						<div class="item">
+							<figure>
+								<img src="{% static 'img/adoptado1.jpg' %}">
+							</figure>
+						</div>
+						<div class="item">
+							<figure>
+								<img src="{% static 'img/adoptado2.jpg' %}">
+							</figure>
+						</div>
+						<div class="item">
+							<figure>
+								<img src="{% static 'img/adoptado3.jpg' %}">
+							</figure>
+						</div>
+					</div>
+					<h1>Adoptados</h1>
+					<div class="linea mb-3"></div>
+					<p>Los perros rescatados, en cuanto a temperamento, resultan extremadamente cariñosos, delicados, relajados y muy obedientes, dejando sorprendidos a todos los que adoptan uno por primera vez.</p>
+				</div>
+			</article>
+		</section>
+		<section class="galeria-comentario mt-3 mb-4">
+			<div class="alert alert-success text-center">Nuestras mascotas que han sido adoptadas</div>
+			<div class="owl-carousel tipo2">
+				{% for item in mascotas %}
+					<div class="item">
+						<div class="row py-3">
+							<div class="col-12 col-md-4 mb-3 mb-md-0">
+								<figure>
+									<img src="{{ item.imagen.url }}" alt="">
+								</figure>
+							</div>
+							<div class="col-12 col-md-8">
+								<p><strong>Nombre:</strong> {{ item.nombre }}</p>
+								<p><strong>Raza:</strong> {{ item.raza }}</p>
+								<p><strong>Descripción:</strong> {{ item.descripcion }}</p>
+								<p><strong>Adoptante:</strong> {{ item.persona }}</p>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</section>
+		<div class="section row galeria justify-content-center">
+			<div class="col-6 col-md-4 col-xl-3 mb-3">
+				<div class="gal" data-toggle="modal" data-target="#gal1">
+					<img src="{% static 'img/gif-1.gif' %}" alt="">
+				</div>
+			</div>
+			<div class="col-6 col-md-4 col-xl-3 mb-3">
+				<div class="gal" data-toggle="modal" data-target="#gal2">
+					<img src="{% static 'img/gif-2.gif' %}" alt="">
+				</div>
+			</div>
+			<div class="col-6 col-md-4 col-xl-3 mb-3">
+				<div class="gal" data-toggle="modal" data-target="#gal3">
+					<img src="{% static 'img/gif-3.gif' %}" alt="">
+				</div>
+			</div>
+			<div class="col-6 col-md-4 col-xl-3 mb-3">
+				<div class="gal" data-toggle="modal" data-target="#gal4">
+					<img src="{% static 'img/gif-4.gif' %}" alt="">
+				</div>
+			</div>
+			<div class="col-6 col-md-4 col-xl-3 mb-3">
+				<div class="gal" data-toggle="modal" data-target="#gal5">
+					<img src="{% static 'img/gif-5.gif' %}" alt="">
+				</div>
+			</div>
+			<div class="col-6 col-md-4 col-xl-3 mb-3">
+				<div class="gal" data-toggle="modal" data-target="#gal6">
+					<img src="{% static 'img/gif-6.gif' %}" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+
+	<div class="modal fade" id="gal1" tabindex="-1" role="dialog" >
+	  	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+	    	<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row modal-galeria">
+						<div class="col-8 col-md-6 mx-auto ">
+							<div class="foto">
+								<img src="{% static 'img/gif-1.gif' %}" alt="">
+							</div>
+						</div>
+						<div class="col-12 col-md-6">
+							<div class="texto">
+								<h3>Covertura en Backstage</h3>
+								<p>¡Disfruta de nuestra covertura 24/7 el backstage para que no te pierdas
+								ninguno de los problemas, traiciones y peleas que ocurran detras de escena!</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="gal2" tabindex="-1" role="dialog" >
+	  	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+	    	<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row modal-galeria">
+						<div class="col-8 col-md-6 mx-auto ">
+							<div class="foto">
+								<img src="{% static 'img/gif-2.gif' %}" alt="">
+							</div>
+						</div>
+						<div class="col-12 col-md-6">
+							<div class="texto">
+								<h3>Casino disponible</h3>
+								<p>Pasa por nuestro casino a probar las delicias que AMABLEMENTE nuestros competidores
+								preparar para ti, ¡No te pierdas esta oportunidad!</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="gal3" tabindex="-1" role="dialog" >
+	  	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+	    	<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row modal-galeria">
+						<div class="col-8 col-md-6 mx-auto ">
+							<div class="foto">
+								<img src="{% static 'img/gif-3.gif' %}" alt="">
+							</div>
+						</div>
+						<div class="col-12 col-md-6">
+							<div class="texto">
+								<h3>Acción en todo lugar</h3>
+								<p>¡Ten tu cámara en mano, la acción puede pasar en cualquier lugar cuando menos lo
+								esperes!.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="gal4" tabindex="-1" role="dialog" >
+	  	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+	    	<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row modal-galeria">
+						<div class="col-8 col-md-6 mx-auto ">
+							<div class="foto">
+								<img src="{% static 'img/gif-4.gif' %}" alt="">
+							</div>
+						</div>
+						<div class="col-12 col-md-6">
+							<div class="texto">
+								<h3>Zonas de descanso</h3>
+								<p>Habilitamos áreas verdes para que puedas descansar, comer o reposar junto a 
+									nuestros campeones, recuerda botar tu basura en los contenedores disponibles. <br>
+									-ZONA LIBRE DE CONFLICTOS-</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="gal5" tabindex="-1" role="dialog" >
+	  	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+	    	<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row modal-galeria">
+						<div class="col-8 col-md-6 mx-auto ">
+							<div class="foto">
+								<img src="{% static 'img/gif-5.gif' %}" alt="">
+							</div>
+						</div>
+						<div class="col-12 col-md-6">
+							<div class="texto">
+								<h3>GIFT CENTER</h3>
+								<p>¿Buscas un recuerda que puedas llevar a casa contigo? ¡Llegaste al sitio
+									indicado! <br>
+									- EWWF GIFT CENTER <br>
+								Con cada compra estarás ayudando a nuestra organización para adoptar más luchadores
+								y expandir la comunidad a más rincones del mundo.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="gal6" tabindex="-1" role="dialog" >
+	  	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+	    	<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row modal-galeria">
+						<div class="col-8 col-md-6 mx-auto ">
+							<div class="foto">
+								<img src="{% static 'img/gif-6.gif' %}" alt="">
+							</div>
+						</div>
+						<div class="col-12 col-md-6">
+							<div class="texto">
+								<h3>Eventos temáticos</h3>
+								<p>¿Fanático de las luchas y Star Wars? ¡Juntamos tus gustos en eventos temáticos de 
+								tus películas favoritas una vez al mes en nuestro evento principal!. <br>
+								Eventos pasados: <br>
+								-STAR WARS <br>
+								-BACK TO THE FUTURE <br>
+								-PROFESSOR ROSSA'S WORLD <br>
+								-FAST AND FURIOUS <br>
+								-KUNG FU PANDA</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock contenido %}
+{% block js %}
+	<!-- SLIDER -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/slider.css' %}" />
+	<script type="text/javascript" src="{% static 'js/jquery.simpleslider.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/backstretch.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/mando-slider.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/transit.js' %}"></script>
+	<!-- SLIDER -->
+
+	<!-- CARRUSEL -->
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+	<script type="text/javascript" src="{% static 'js/owl.carousel.js' %}"></script>
+	<!-- FIN CARRUSEL -->
+
+	<script>
+		$(document).ready(function(){
+			/* INDICO IMAGENES SEGÚN SLIDE */
+			$(".slide#slide1").backstretch("{% static 'img/slide1.jpg' %}");
+			$(".slide#slide2").backstretch("{% static 'img/slide2.jpg' %}");
+			$(".slide#slide3").backstretch("{% static 'img/slide3.jpg' %}");
+
+			/* CONFIGURO "CARRUSEL" */
+			var owl = $('.owl-carousel.tipo1');
+			owl.owlCarousel({
+				loop: true,
+				margin: 0,
+				responsiveClass: true,
+				nav: true,
+				dots: false,
+				autoplay:true,
+	    		autoplayTimeout: 2000,
+				responsive:{
+					0:{
+						items: 1
+					}
+				}
+			});
+
+
+			var owl = $('.owl-carousel.tipo2');
+			owl.owlCarousel({
+				loop: true,
+				margin: 0,
+				responsiveClass: true,
+				nav: true,
+				dots: false,
+				autoplay:true,
+				autoplayTimeout: 6000,
+				responsive:{
+					0:{
+						items: 1
+					}
+				}
+			});
+
+			/* INDICO QUE MENÚ ESTÁ ACTIVO */
+			$('[data-active="1"]').addClass('active');
+		});
+	</script>
+{% endblock js %}

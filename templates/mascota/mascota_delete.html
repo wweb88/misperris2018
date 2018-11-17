@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block tituloPagina %}
+	<title>Eliminar registro de Mascota | Mis Perris</title>
+{% endblock tituloPagina %}
+{% block contenido %}
+	<div class="container py-5">
+		<h1 class="titulo">¿Eliminar registro de {{ object.nombre }}?</h1>
+
+		<form method="POST" class="row" enctype="multipart/form-data">
+			{% csrf_token %}
+			
+			<div class="col-12 pt-3 text-center">
+				<figure class="foto-eliminar"><img src="{{ object.imagen.url }}" alt=""></figure>
+				<a href="{% url 'index' %} " class="btn btn-secondary">Cancelar</a>
+				<button type="submit" class="btn btn-danger">Si, Eliminar</button>
+			</div>
+		</form>
+	</div>
+{% endblock contenido %}
+{% block js %}
+	<script>
+		$(document).ready(function(){
+			$('[data-active="2"]').addClass('active');
+		});
+	</script>
+{% endblock js %}

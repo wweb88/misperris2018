@@ -1,0 +1,65 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+	<link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC:700" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	{% block tituloPagina %}
+		<title>Mis Pandis</title>
+	{% endblock tituloPagina %}
+</head>
+<body>
+	{% block body %}
+        {% block header %}
+        	{% include "base/header.html" %}
+        {% endblock header %}
+
+        {% block contenido %} {% endblock contenido %}
+        
+        {% block footer %}
+        	{% include "base/footer.html" %}
+        {% endblock footer %}
+        
+        {% block javascripts %}
+            <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script> <!-- LIBRERIA JQUERY -->
+			<script src="{% static 'js/popper.min.js' %}"></script> <!-- LIBRERIA PARA BOOTSTRAP SLIDER -->
+			<script src="{% static 'js/bootstrap.min.js' %}"></script> <!-- LIBRERIA BOOTSTRAP -->
+			<script src="{% static 'js/jquery-ui.js' %}"></script> <!-- LIBRERIA JQUERYUI -->
+			<script>
+				$(document).ready(function(){
+					
+		        });
+
+		        var url_actual = window.location.href;
+				$('.compartir1').click(function(){
+				    window.open('http://www.facebook.com/sharer.php?u='+url_actual);
+				});
+				$('.compartir2').click(function(){
+				    window.open('https://plus.google.com/?hl=es');
+				});
+				$('.compartir3').click(function(){
+				    window.open('https://www.instagram.com/?hl=es-la');
+				});
+
+			    
+
+				$('#modalFormulario input[type="submit"]').click(function(){
+					if($('.rut-error').hasClass('error')){
+						return false;
+					}
+					if($('#modalFormulario input[type="contrasena"]') != $('#modalFormulario input[type="confcontrasena"]')){
+						return false;
+					}
+				});
+			</script>
+            {% block js %} {# Este bloque se redefine en las vistas #} {% endblock js %}
+        {% endblock javascripts %}
+    {% endblock body %}
+</body>
+</html>

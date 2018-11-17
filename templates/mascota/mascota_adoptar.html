@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block tituloPagina %}
+	<title>Adoptar Mascota | Mis Perris</title>
+{% endblock tituloPagina %}
+{% block contenido %}
+	<div class="container py-5">
+		<h1 class="titulo">Adoptar a {{ object.nombre }}</h1>
+
+		<form method="POST" class="row" enctype="multipart/form-data" id="form-adoptar">
+			{% csrf_token %}
+			
+			<div class="col-12 pt-3 text-center">
+				<figure class="foto-eliminar"><img src="{{ object.imagen.url }}" alt=""></figure>
+			</div>
+			
+			<div class="d-none">
+				{{ form.imagen }}
+				{{ form.nombre }}
+				{{ form.raza }}
+				{{ form.estado }}
+				{{ form.descripcion }}
+				{{ form.persona }}
+			</div>
+
+			<div class="col-12 text-center">
+				<a href="{% url 'index' %} " class="btn btn-secondary">Cancelar</a>
+				<button type="submit" class="btn btn-success">Si, Adoptar!</button>
+			</div>
+		</form>
+	</div>
+{% endblock contenido %}
+{% block js %}
+	<script>
+		$(document).ready(function(){
+			$('[data-active="2"]').addClass('active');
+			var persona = parseInt('{{ user.id }}');
+			$('#id_persona').val(persona);
+			$('#id_estado').val('adoptado');
+		});
+	</script>
+{% endblock js %}
