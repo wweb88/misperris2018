@@ -30,7 +30,7 @@
 							<div class="mix col-6 col-md-4 col-xl-3 mb-3 {% if item.estado == 'rescatado' %}rescatado{% endif %}{% if item.estado == 'disponible' %}disponible{% endif %}{% if item.estado == 'adoptado' %}adoptado{% endif %}" >
 								<div class="mascota">
 									<figure>
-										<a href="{{ item.imagen.url }}" data-toggle="lightbox" data-gallery="galeria">
+										<a href="{{ item.imagen.url }}" data-toggle="lightbox" data-gallery="galeria" title="{{ item.nombre}}">
 											<img src="{{ item.imagen.url }}" alt="">
 										</a>
 									</figure>
